@@ -1,0 +1,14 @@
+import mysql.connector
+from mysql.connector import errorcode
+
+try:
+    conx = mysql.connector.connect(user='{user}', password='{password}', host='localhost', database='db_mahasiswa')
+except mysql.connector.Error as err:
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+        print('Mungkin salah username dan password')
+    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+        print('database tidak ada')
+    else:
+        print(err)
+else:
+    print('Koneksi ke database berhasil')
