@@ -1,4 +1,4 @@
-7.	def menu():
+def menu():
      os.system('cls')
      print("Menu Aplikasi Data Siswa LinkedList python")
      print("-------------------------------------------")
