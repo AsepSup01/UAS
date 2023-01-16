@@ -1,17 +1,56 @@
-7.	import mysql.connector
-
-db = mysql.connector.connect(
-  host="localhost",
-  user="admin",
-  passwd="admin",
-  database="db_mahasiswa"
-)
-
-cursor = db.cursor()
-sql = "SELECT * FROM nama"
-cursor.execute(sql)
-
-results = cursor.fetchall()
-
-for data in results:
-  print(data)
+7.	def menu():
+     os.system('cls')
+     print("Menu Aplikasi Data Siswa LinkedList python")
+     print("-------------------------------------------")
+     print("1. Input Data Siswa")
+     print("2. Tampilkan Data Siswa")
+     print("3. Update Data Siswa")
+     print("4. Hapus Data Siswa")
+     print("5. Author")
+     print("6. Keluar Aplikasi")
+     pilih = int(input("Masukkan pilihan anda : "))
+     if pilih == 1 :
+          pilih1()
+          menu()
+     elif pilih == 2:
+          tampil()
+          input("kembali menu utama")
+          menu()
+     elif pilih == 3:
+          index_update=-1
+          tampil()
+          id_edit = int(input("Input Nim yang akan di update "))
+          for a in range(0, len(db_mahasiswa)):
+               if id_edit == db_mahasiswa[a].nim:
+                    index_update = a
+                    break
+          if(index_update > -1):
+               print("INPUT DATA YANG DI UPATE ")
+               siswa = Mahasiswa()
+               siswa.nim = (int(input("masukkan nim : ")))
+               siswa.nama = (input("masukkan nama siswa : "))
+               db_mahasiswa[index_update] = siswa
+               print("berhasil update data siswa")
+          else : print("nim tidak ditemukan")
+          input("kembali menu utama")
+          menu()
+     elif pilih == 4:
+                os.system('cls')
+                tampil()
+                id_hapus = int(input("Input Nim yang akan di hapus : "))
+                for data in db_mahasiswa:
+                    if data.nim == id_hapus:
+                         dataSiswa.remove(data)
+                    else :
+                         print("data tidak di temukan")
+                print("DATA MAHASISWA ")
+                for data in db_mahasiswa:
+                    print("Nim : "+str(data.nim));
+                    print("Nama  : "+data.nama)
+                input("kembali menu utama")
+                menu()
+     elif pilih == 5 :
+          author()
+          menu()
+     elif pilih == 6 :
+          sys.exit()
